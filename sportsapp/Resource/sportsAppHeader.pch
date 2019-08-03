@@ -1,0 +1,237 @@
+//
+//  sportsAppHeader.pch
+//  sportsapp
+//
+//  Created by WEI ZOU on 2019/4/25.
+//  Copyright © 2019 xiguadianjing. All rights reserved.
+//
+
+#ifndef sportsAppHeader_pch
+#define sportsAppHeader_pch
+
+#define kBaseUrl                          @"http://47.75.2.224:7081/V1/DataInterface"
+//通过十六进制数据生成颜色
+#define UIColorFromRGB(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
+
+//获取屏幕宽高
+#define KScreenWidth         [[UIScreen mainScreen] bounds].size.width
+#define KScreenHeight        [[UIScreen mainScreen] bounds].size.height
+
+//创建frame
+#define aFrame(x,y,width,height) CGRectMake(x, y, width, height)
+
+//字体的缩放
+//#define ZMC_FontScale(R) KScreenWidth / 375 * R
+//列向比例
+#define ZMC_WidthScale(number) ([UIScreen mainScreen].bounds.size.width/375.*(number))
+//纵向比例
+#define ZMC_HeightScale(number) ([UIScreen mainScreen].bounds.size.height/667.*(number))
+
+//判断字符串是否是null
+#define NSStringIsNilOrEmpty(str) (nil == (str) || [(str) isEqualToString:@""]|| [(str) isEqualToString:@"(null)"]|| [(str) isEqualToString:@"NULL"])
+
+//强弱引用
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+#define kStrongSelf(type) __strong typeof(type) type = weak##type;
+
+//读取本地图片
+#define kIMAGE(_X_) [UIImage imageNamed:_X_]
+
+//View 圆角和加边框
+#define kViewBorderRadius(View, Radius, Width, Color)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]]
+
+// View 圆角
+#define kViewRadius(View, Radius)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES]
+
+///IOS 版本判断
+#define IOSAVAILABLEVERSION(version) ([[UIDevice currentDevice] availableVersion:version] < 0)
+// 当前系统版本
+#define kCurrentSystemVersion [[UIDevice currentDevice] systemVersion]
+#define kAppVersion     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define kAppBundleId    [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]
+
+//-------------------打印日志-------------------------
+//DEBUG  模式下打印日志,当前行
+#ifdef DEBUG
+#define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define DLog(...)
+#endif
+
+//判断是否是ipad
+#define ispad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+//判断iPhone4系列
+#define kiPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//判断iPhone5系列
+#define kiPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//判断iPhone6系列
+#define kiPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//判断iphone6+系列
+#define kiPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//判断iPhoneX
+#define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//判断iPHoneXr
+#define IS_IPHONE_Xr ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//判断iPhoneXs
+#define IS_IPHONE_Xs ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//判断iPhoneXs Max
+#define IS_IPHONE_Xs_Max ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) && !ispad : NO)
+//iPhoneX系列
+//状态栏
+#define Height_StatusBar ((IS_IPHONE_X==YES || IS_IPHONE_Xr ==YES || IS_IPHONE_Xs== YES || IS_IPHONE_Xs_Max== YES) ? 44.0 : 20.0)
+//导航栏的高度
+#define Height_NavBar ((IS_IPHONE_X==YES || IS_IPHONE_Xr ==YES || IS_IPHONE_Xs== YES || IS_IPHONE_Xs_Max== YES) ? 88.0 : 64.0)
+//tabbar高度
+#define Height_TabBar ((IS_IPHONE_X==YES || IS_IPHONE_Xr ==YES || IS_IPHONE_Xs== YES || IS_IPHONE_Xs_Max== YES) ? 83.0 : 49.0)
+/** 底部横条高度 */
+#define Height_HomeIndicator ((IS_IPHONE_X==YES || IS_IPHONE_Xr ==YES || IS_IPHONE_Xs== YES || IS_IPHONE_Xs_Max== YES) ? 34 : 0)
+/** 白色  */
+#define kColorWhite                 0xffffff
+
+/** 红色  */
+#define kColorRed                   0xFF0000
+/** 黑色系 由深到浅 */
+#define kColorDark                  0x000000    //黑色
+#define kColorTwoDark               0x11152D    //渐变黑色
+/** 灰色系 由深到浅 */
+#define kColorGMine                 0x999999    //主灰色
+#define kColorGSecondary            0x3B414D    //次灰色
+#define kColorGThree                0xeeeeee    //次灰色
+
+/** 红色 橘色 蓝色系 */
+#define kColorRead                  0xFF0000    //红色
+#define kColorBlue                  0x0000FF    //蓝色
+#define kColorGreen                 0x00FF00    //绿色
+#define kColorOrange                0xFF6100    //橙色
+#define kColorViolet                0xA020F0    //紫色
+
+#define kColorCellBg                0x192749    //cell深蓝色背景色
+#define kColorViewBg                0x192A54    //cell浅蓝色背景色
+#define kColorHeaderViewBg          0x111829    //title黑色色背景色
+
+#define kColorG                     0x5BBFD4    // 绿色边框
+
+#define kColorLabelBG               0x5BBFD4    // 浅灰色背景色
+
+#define kColorLabel                 0x9C9C9C    // title 灰色
+
+#define kColorLabelH                0x4260ab    // title 高亮蓝色
+
+#define kTabHeaderBGColor           0xF7F8FA    //tableview头背景色
+
+#define NSPathNSCache                   [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject]
+//主色调背景色
+#define FrameColor                      RGBColorAlpha(228, 35, 33, 1.0)
+#define FrameRedBGColor                RGBColorAlpha(208, 7, 116, 1.0)
+
+//通过十六进制数据生成颜色
+#define UIColorFromRGB(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
+
+//通过RGB值数据生成颜色
+#define RGBColorAlpha(r,g,b,a)          [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+//主界面title大小
+#define FrameMainFont  [UIFont systemFontOfSize:18]
+//主界面次title大小
+#define FrameSecondFont  [UIFont systemFontOfSize:16]
+//主界面次次title大小
+#define FrameThreeFont  [UIFont systemFontOfSize:14]
+//主界面次次title大小
+#define FrameFourFont  [UIFont systemFontOfSize:12]
+//主界面次次title大小
+#define FrameFiveFont  [UIFont systemFontOfSize:10]
+
+//颜色
+#define ColorValue(value) [UIColor colorWithHexString:value]
+
+#define Color333333 ColorValue(@"333333")
+#define Color666666 ColorValue(@"666666")
+#define Color999999 ColorValue(@"999999")
+#define Colore6e6e6 ColorValue(@"E6E6E6")
+#define Color303030 ColorValue(@"303030")
+#define ColorDDDDDD ColorValue(@"DDDDDD")
+#define ColorF1F1F1 ColorValue(@"F1F1F1")
+#define ColorF2F2F2 ColorValue(@"F2F2F2")
+#define ColorFFFFFF ColorValue(@"FFFFFF")
+#define ColorEEEEEE ColorValue(@"EEEEEE")
+
+//字体
+#define Font8  [UIFont systemFontOfSize:8]
+#define Font9  [UIFont systemFontOfSize:9]
+#define Font10  [UIFont systemFontOfSize:10]
+#define Font11  [UIFont systemFontOfSize:11]
+#define Font12  [UIFont systemFontOfSize:12]
+#define Font13  [UIFont systemFontOfSize:13]
+#define Font14  [UIFont systemFontOfSize:14]
+#define Font15  [UIFont systemFontOfSize:15]
+#define Font16  [UIFont systemFontOfSize:16]
+#define Font17  [UIFont systemFontOfSize:17]
+#define Font18  [UIFont systemFontOfSize:18]
+#define Font19  [UIFont systemFontOfSize:19]
+#define Font20  [UIFont systemFontOfSize:20]
+#define Font21  [UIFont systemFontOfSize:21]
+#define Font22  [UIFont systemFontOfSize:22]
+#define Font23  [UIFont systemFontOfSize:23]
+#define Font24  [UIFont systemFontOfSize:24]
+#define Font25  [UIFont systemFontOfSize:25]
+#define Font30  [UIFont systemFontOfSize:30]
+#define Font40  [UIFont systemFontOfSize:40]
+
+/* ViewController */
+#import "MCHomeViewController.h"
+#import "MCScoreViewController.h"
+#import "MCGrandViewController.h"
+#import "SecondCtrl.h"
+
+/* The Base build */
+#import "MCLabel.h"
+#import "MCRigImageView.h"
+#import "MCSeparator.h"
+#import "MCXUIButton.h"
+
+/* The View */
+
+#import "LXScoreDetHeadView.h"
+#import "JLRingChart.h"
+
+/* Category 分类 */
+#import "NSDictionary+deletNull.h"
+
+/* The Base Class */
+#import "BaseViewController.h"
+#import "BaseTabBarController.h"
+#import "BaseNavigationController.h"
+#import "MethodFactory.h"
+#import "LXScoreBaseVC.h"
+#import "MCHostManager.h"
+#import "ZHPickView.h"
+
+/* The third party */
+#import "YYKit.h"
+#import "ZLXNetWork.h"
+#import "Masonry.h"
+#import "FTPageView.h"
+#import <MJRefresh/MJRefresh.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
+/* Model */
+#import "MCTabBarInfoModel.h"
+#import "MCUpdateInfoModel.h"
+#import "MCNewsListModel.h"
+#import "MCScoreModel.h"
+#import "MCBasektDetModel.h"
+#import "MCScoreFootballModel.h"
+#import "MCScoreFoDaModel.h"
+#import "MCStandingsModel.h"
+#import "MCStandComplexModel.h"
+#import "MCStandRecordModel.h"
+
+#endif /* sportsAppHeader_pch */

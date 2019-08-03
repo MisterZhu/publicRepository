@@ -36,11 +36,11 @@
     return _table;
 }
 - (UIView *)setHeaderView{
-    UIView *headerView = [[UIView alloc] initWithFrame:aFrame(0, 0, screenWidth, 44)];
+    UIView *headerView = [[UIView alloc] initWithFrame:aFrame(0, 0, KScreenWidth, 44)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     headerView.userInteractionEnabled = YES;
 
-    self.backView = [[UIView alloc] initWithFrame:aFrame(0, 0, screenWidth, 43)];
+    self.backView = [[UIView alloc] initWithFrame:aFrame(0, 0, KScreenWidth, 43)];
     self.backView.backgroundColor = [UIColor whiteColor];
     self.backView.userInteractionEnabled = YES;
     [headerView addSubview:self.backView];
@@ -48,7 +48,7 @@
 //    _packageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [_packageBtn setTitleColor:FrameRedBGColor forState:UIControlStateSelected];
 //    [_packageBtn setTitleColor:Color333333 forState:UIControlStateNormal];
-//    _packageBtn.frame = aFrame(0, 0, screenWidth/4, 40);
+//    _packageBtn.frame = aFrame(0, 0, KScreenWidth/4, 40);
 //    [_packageBtn setTitle:@"套餐" forState:UIControlStateNormal];
 //    _packageBtn.titleLabel.font =Font14;
 //    _packageBtn.selected = NO;
@@ -57,7 +57,7 @@
     _detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_detailBtn setTitleColor:FrameRedBGColor forState:UIControlStateSelected];
     [_detailBtn setTitleColor:Color333333 forState:UIControlStateNormal];
-    _detailBtn.frame = aFrame(0, 0, screenWidth/3, 40);
+    _detailBtn.frame = aFrame(0, 0, KScreenWidth/3, 40);
     [_detailBtn setTitle:@"详情" forState:UIControlStateNormal];
     _detailBtn.titleLabel.font =Font14;
     _detailBtn.selected = NO;
@@ -68,7 +68,7 @@
     _tripBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_tripBtn setTitleColor:FrameRedBGColor forState:UIControlStateSelected];
     [_tripBtn setTitleColor:Color333333 forState:UIControlStateNormal];
-    _tripBtn.frame = aFrame(screenWidth/3, 0, screenWidth/3, 40);
+    _tripBtn.frame = aFrame(KScreenWidth/3, 0, KScreenWidth/3, 40);
     [_tripBtn setTitle:@"行程" forState:UIControlStateNormal];
     _tripBtn.selected = NO;
     _tripBtn.titleLabel.font =Font14;
@@ -80,7 +80,7 @@
     _costBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_costBtn setTitleColor:FrameRedBGColor forState:UIControlStateSelected];
     [_costBtn setTitleColor:Color333333 forState:UIControlStateNormal];
-    _costBtn.frame = aFrame(screenWidth*2/3, 0, screenWidth/3, 40);
+    _costBtn.frame = aFrame(KScreenWidth*2/3, 0, KScreenWidth/3, 40);
     [_costBtn setTitle:@"费用须知" forState:UIControlStateNormal];
     _costBtn.selected = NO;
     _costBtn.tag = 2;
@@ -92,9 +92,9 @@
     _lineView = [[UIView alloc] init];
     [self.backView addSubview:_lineView];
     _lineView.backgroundColor = FrameRedBGColor;
-    _lineView.frame = aFrame(0, 0, screenWidth/6, 2);
+    _lineView.frame = aFrame(0, 0, KScreenWidth/6, 2);
     
-    self.centerX = screenWidth/6+screenWidth/3*_currentSection;
+    self.centerX = KScreenWidth/6+KScreenWidth/3*_currentSection;
 
     _lineView.center = CGPointMake(self.centerX, 42);
     if (0 == _currentSection) {
@@ -243,7 +243,7 @@
 
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 //{
-//    //_table.contentSize = CGSizeMake(screenWidth,screenHeight);
+//    //_table.contentSize = CGSizeMake(KScreenWidth,screenHeight);
 //}
 // !!!: 悬停的位置
 //-(CGFloat)lolitaTableViewHeightForStayPosition:(LolitaTableView *)tableView{

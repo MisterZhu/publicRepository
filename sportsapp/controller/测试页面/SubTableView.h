@@ -37,7 +37,7 @@
 @property (nonatomic) BOOL isUpScroll;
 @property (nonatomic) NSInteger currentSection;
 
-@property (nonatomic) QFTTravelProductInfoModel *infoModel;
+//@property (nonatomic) QFTTravelProductInfoModel *infoModel;
 
 @property (nonatomic) BOOL isClick;
 

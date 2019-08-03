@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondCtrl : AYRBaseViewController
+@interface SecondCtrl : BaseViewController
 
-@property (nonatomic) ProductRows *model;
+//@property (nonatomic) ProductRows *model;
 
 
 @end
