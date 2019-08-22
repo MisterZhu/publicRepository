@@ -53,10 +53,10 @@
 //        }
 //    }
     
-    NSArray *controllerArray = @[[MCHomeViewController class],[MCScoreViewController class],[SecondCtrl class]];
-    NSArray *titleArray = @[@"首页",@"比分",@"战报"];
-    NSArray *tabImgArray = @[@"index_n",@"score_n",@"top_n"];
-    NSArray *selImgArray = @[@"index_y",@"score_y",@"top_y"];
+    NSArray *controllerArray = @[[MCHomeViewController class],[MCScoreViewController class],[MCGrandViewController class],[SecondCtrl class]];
+    NSArray *titleArray = @[@"首页",@"比分",@"战报",@"测试"];
+    NSArray *tabImgArray = @[@"index_n",@"score_n",@"top_n",@"top_n"];
+    NSArray *selImgArray = @[@"index_y",@"score_y",@"top_y",@"top_y"];
     for(NSInteger i = 0;i < [controllerArray count];i++){
         BaseViewController *controller = [[controllerArray[i] alloc] init];
         BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];

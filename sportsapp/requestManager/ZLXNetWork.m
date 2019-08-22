@@ -101,6 +101,7 @@ requestFailedBlock:(NetWorkRequestFailedBlock)failedBlock{
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.requestSerializer.timeoutInterval = 8.f;
 
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects: @"application/json",@"text/json", @"text/javascript", @"text/html", @"text/plain",nil];
 
